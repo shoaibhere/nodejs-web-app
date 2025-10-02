@@ -25,13 +25,14 @@ client.on("messageCreate", async (message) => {
     console.log(`Forwarding: ${message.content}`);
 
     await fetch("https://n8n.adnantariq.pk/webhook/expense", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        content: message.content,
-        user: message.author.username,
-      }),
-    });
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    text: message.content,          // 👈 now matches n8n
+    user: message.author.username,  // optional, for tracking
+  }),
+});
+
   }
 });
 
